@@ -172,7 +172,7 @@ Prepare training data using the preprocessing scripts. Example with Emilia-YODAS
 ```bash
 python examples/data_preprocess/prepare_emilia_en.py \
     --output-dir datasets/emilia-yodas-en_0-9 \
-    --data-files '{"train": "Emilia-YODAS/**/EN-B000000.tar"}' \
+    --data-files '{"train": "Emilia-YODAS/**/EN-B00000*.tar"}' \
     --encoder-devices auto \
     --valid-ratio 0.005 \
     --hf-num-proc 8
