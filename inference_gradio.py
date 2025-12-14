@@ -58,7 +58,7 @@ def seed_everything(seed: Optional[int]) -> int:
 def _get_whisper_model():
     """Cache Whisper model to avoid reloading on every inference."""
     print("[Info] Loading Whisper model (large-v3-turbo)...")
-    return whisper.load_model("large-v3-turbo")
+    return whisper.load_model("large-v3-turbo", device="cpu")
 
 
 @lru_cache(maxsize=1)

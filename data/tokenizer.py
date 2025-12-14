@@ -52,7 +52,7 @@ class AudioTokenizer:
                 None, config=codec_config, state_dict=ckpt
             )
             self.codec.eval()
-            self.codec.to(device)
+            self.codec.to("cpu")
         self.sample_rate = sample_rate or None
         if self.sample_rate is None:
             self.sample_rate = int(getattr(self.codec.config, "sample_rate", 44100))
@@ -83,7 +83,7 @@ class AudioTokenizer:
         codes = frames
         if codes.ndim == 2:
             codes = codes.unsqueeze(1)
-        codes = codes.long().to(self.device)
+        codes = codes.to("cpu")
         recon = self.codec.decode_code(codes)
         return recon
 

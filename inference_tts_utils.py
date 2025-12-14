@@ -325,7 +325,7 @@ def inference_one_sample(
         except Exception as exc:
             logging.warning(f"Failed to decode concatenated prompt audio: {exc}")
 
-    gen_sample = audio_tokenizer.decode(gen_frames)
+    gen_sample = audio_tokenizer.decode(gen_frames.detach().to("cpu"))
 
     if concat_sample is None:
         concat_sample = gen_sample
